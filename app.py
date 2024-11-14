@@ -26,7 +26,6 @@ class Token(BaseModel):
     accessToken: str
     tokenType: str
 
-
 def verifyPassword(plainPassword, hashedPassword):
     return pwdContext.verify(plainPassword, hashedPassword)
 
@@ -54,7 +53,7 @@ def createAccessToken(data: dict, expiresDelta: timedelta = None):
     encodedJWT = jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
     return encodedJWT
 
-# Rutas de autenticación
+#Rutas de autenticación
 @app.post("/register")
 def register(user: User):
     if user.username in usersDB:
